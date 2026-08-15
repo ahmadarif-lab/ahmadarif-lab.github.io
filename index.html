@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmad Arif - Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /*
+     * Neobrutalism: krem/gelap polos, garis hitam tebal, bayangan padat
+     * tanpa blur, sudut siku, tanpa gradien. Sama seperti tema di komplek-web.
+     */
+    :root {
+      --tinta: oklch(0 0 0);
+      --bg: oklch(0.967 0.031 97);
+      --text: oklch(0.16 0 0);
+      --card-bg: oklch(1 0 0);
+      --accent: oklch(0.652 0.196 17);
+      --accent-foreground: oklch(1 0 0);
+      --secondary: oklch(0.886 0.163 92);
+      --secondary-foreground: oklch(0.16 0 0);
+      --shadow-sm: 3px 3px 0 0 var(--tinta);
+      --shadow: 5px 5px 0 0 var(--tinta);
+      --shadow-lg: 8px 8px 0 0 var(--tinta);
+    }
+
+    body.dark {
+      --bg: oklch(0.24 0.014 280);
+      --text: oklch(0.97 0 0);
+      --card-bg: oklch(0.31 0.016 280);
+      --accent: oklch(0.7 0.19 17);
+      --accent-foreground: oklch(0.12 0 0);
+      --secondary: oklch(0.86 0.16 92);
+      --secondary-foreground: oklch(0.12 0 0);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Space Grotesk', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    #goToTopBtn {
+      opacity: 0;
+      visibility: hidden;
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 99;
+      border: 3px solid var(--tinta);
+      outline: none;
+      background-color: var(--secondary);
+      color: var(--secondary-foreground);
+      cursor: pointer;
+      padding: 14px 16px;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, opacity 0.3s ease, visibility 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+    }
+
+    #goToTopBtn.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #goToTopBtn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    #goToTopBtn:active {
+      transform: translate(5px, 5px);
+      box-shadow: 0 0 0 0 var(--tinta);
+    }
+
+    header {
+      text-align: center;
+      padding: 3rem 1rem 2rem 1rem;
+      background: var(--accent);
+      color: var(--accent-foreground);
+      border-bottom: 4px solid var(--tinta);
+      position: relative;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 0;
+      overflow: hidden;
+      margin: 0 auto 1.25rem auto;
+      border: 4px solid var(--tinta);
+      box-shadow: var(--shadow);
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+      position: relative;
+      background: var(--card-bg);
+    }
+
+    .profile-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: opacity 0.4s ease-in-out;
+      opacity: 0;
+    }
+
+    .profile-photo img.loaded {
+      opacity: 1;
+    }
+
+    .photo-loader {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(255, 255, 255, 0.35);
+      border-top: 4px solid var(--tinta);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    .photo-loader.hidden {
+      display: none;
+    }
+
+    @keyframes spin {
+      0% { transform: translate(-50%, -50%) rotate(0deg); }
+      100% { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    .profile-photo:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    header h1 {
+      margin: 0;
+      font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+      font-size: 2.1rem;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+    }
+
+    header p {
+      margin: 0.3rem 0;
+      font-size: 1.05rem;
+      font-weight: 500;
+    }
+
+    .social-links {
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .social-links a {
+      display: inline-block;
+      padding: 0.4rem 0.9rem;
+      background: var(--card-bg);
+      color: var(--text);
+      border: 2px solid var(--tinta);
+      box-shadow: var(--shadow-sm);
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    }
+
+    .social-links a:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow);
+    }
+
+    .social-links a:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0 0 0 0 var(--tinta);
+    }
+
+    #dark-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card-bg);
+      color: var(--text);
+      border: 2px solid var(--tinta);
+      box-shadow: var(--shadow-sm);
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 700;
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    }
+
+    #dark-toggle:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: var(--shadow);
+    }
+
+    #dark-toggle:active {
+      transform: translate(3px, 3px);
+      box-shadow: 0 0 0 0 var(--tinta);
+    }
+
+    section {
+      max-width: 900px;
+      margin: 2.5rem auto;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      display: inline-block;
+      font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin: 0 0 1.25rem 0;
+      padding: 0.35rem 0.75rem;
+      background: var(--secondary);
+      color: var(--secondary-foreground);
+      border: 2px solid var(--tinta);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .stack-item {
+      background: var(--card-bg);
+      color: var(--text);
+      padding: 0.85rem 1.3rem;
+      border: 2px solid var(--tinta);
+      box-shadow: var(--shadow-sm);
+      font-weight: 700;
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out, background 0.15s ease-out, color 0.15s ease-out;
+      cursor: default;
+    }
+
+    .stack-item:hover {
+      background: var(--accent);
+      color: var(--accent-foreground);
+      transform: translate(-3px, -3px);
+      box-shadow: var(--shadow);
+    }
+
+    .experience-item {
+      background: var(--card-bg);
+      color: var(--text);
+      border: 2px solid var(--tinta);
+      box-shadow: var(--shadow-sm);
+      margin-bottom: 1.25rem;
+      padding: 1rem 1.25rem;
+      transition: transform 0.15s ease-out, box-shadow 0.15s ease-out;
+    }
+
+    .experience-item strong {
+      font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+      font-size: 0.85rem;
+      letter-spacing: 0.02em;
+    }
+
+    .experience-item:hover {
+      transform: translate(-3px, -3px);
+      box-shadow: var(--shadow);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--accent);
+      color: var(--accent-foreground);
+      border-top: 4px solid var(--tinta);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <button id="dark-toggle">🌙 Dark</button>
+    <div class="profile-photo">
+      <div class="photo-loader"></div>
+      <img src='photo.png' border='0' alt='Ahmad Arif' id="profileImg"/>
+    </div>
+    <h1>Ahmad Arif</h1>
+    <p>Software Engineer from Karawang, Indonesia</p>
+    <p>Currently working at PT. People Intelligence Indonesia (GreatDay HR)</p>
+    <div class="social-links">
+      <a href="https://github.com/ahmadarif" target="_blank">GitHub (2nd)</a>
+      <a href="https://github.com/ahmadarif-lab" target="_blank">GitHub</a>
+      <a href="https://medium.com/@ahmadarif" target="_blank">Medium</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I am a Software Engineer with extensive experience in <strong>Node.js</strong>, particularly with <strong>NestJS</strong>.
+      My technological journey covers backend systems, game development, and DevOps practices using Docker and Rancher.
+      I am also a Machine Learning enthusiast with a special interest in computer vision.
+    </p>
+  </section>
+
+  <section>
+    <h2>Tech Stack</h2>
+    <div class="tech-stack">
+      <div class="stack-item">Node.js (NestJS)</div>
+      <div class="stack-item">Java</div>
+      <div class="stack-item">Python (basic)</div>
+      <div class="stack-item">Docker</div>
+      <div class="stack-item">Rancher</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+    <div class="experience-item">
+      <strong>2019 - Present</strong><br>
+      Software Engineer at PT. People Intelligence Indonesia (GreatDay HR) – Building SaaS products for HRIS.
+    </div>
+    <div class="experience-item">
+      <strong>2018</strong><br>
+      Chief Technology Officer (PT. Digital Amanah Insani) – Developed the company's strategy for using technological resources.
+    </div>
+    <div class="experience-item">
+      <strong>2017</strong><br>
+      Customer Information Apps (TBBM Cikampek) – Led the project, building the infrastructure and website for CIA.
+    </div>
+    <div class="experience-item">
+      <strong>2016</strong><br>
+      PUSPAMAN (BPOM) – Built infrastructure and website for CIA.
+    </div>
+    <div class="experience-item">
+      <strong>2016</strong><br>
+      KPDJP Accounting System – Developed RESTful backend for E-Taxpayer Accounting, Revenue Accounting System, and Business Intelligence.
+    </div>
+    <div class="experience-item">
+      <strong>2016</strong><br>
+      PLTD Apung Photobooth – Built photobooth apps using AS3 for PLTD Apung.
+    </div>
+    <div class="experience-item">
+      <strong>2014 - 2016</strong><br>
+      Co-founded a startup focusing on game and interactive media development.
+    </div>
+  </section>
+
+  <section>
+    <h2>Activities</h2>
+    <p>
+      Apart from working, I spend time with my family, learning religion, and sometimes playing games.
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ahmad Arif. All rights reserved.</p>
+  </footer>
+
+  <button id="goToTopBtn" title="Go to top">↑</button>
+
+  <script>
+    // Profile photo loading
+    const profileImg = document.getElementById("profileImg");
+    const photoLoader = document.querySelector(".photo-loader");
+
+    profileImg.addEventListener("load", () => {
+      photoLoader.classList.add("hidden");
+      profileImg.classList.add("loaded");
+    });
+
+    // If image is cached and already loaded
+    if (profileImg.complete) {
+      photoLoader.classList.add("hidden");
+      profileImg.classList.add("loaded");
+    }
+
+    // Dark mode toggle
+    const toggleBtn = document.getElementById("dark-toggle");
+    toggleBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      if (document.body.classList.contains("dark")) {
+        toggleBtn.textContent = "☀️ Light";
+      } else {
+        toggleBtn.textContent = "🌙 Dark";
+      }
+    });
+
+    // Go to top button
+    const goToTopBtn = document.getElementById("goToTopBtn");
+
+    window.onscroll = function() {
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        goToTopBtn.classList.add("show");
+      } else {
+        goToTopBtn.classList.remove("show");
+      }
+    };
+
+    goToTopBtn.addEventListener("click", () => {
+      window.scrollTo({top: 0, behavior: 'smooth'});
+    });
+  </script>
+</body>
+</html>
