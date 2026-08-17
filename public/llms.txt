@@ -1,0 +1,32 @@
+# Ahmad Arif
+
+> Technical Project Manager from Karawang, Indonesia, with a software engineering background spanning backend systems, game development, and DevOps. Currently at PT. People Intelligence Indonesia (GreatDay HR).
+
+## About
+
+Ahmad Arif's interest in machine learning stems from graduate research in biomedical signal processing — EEG-based alertness and fatigue classification using wavelet transforms and neural networks.
+
+## Tech stack
+
+Node.js, Java, Python, Docker, Kubernetes
+
+## Experience
+
+- Jan 2019 - Present: Technical Project Manager at PT. People Intelligence Indonesia (GreatDay HR) — owns GreatDay's backend architecture and framework design across Employee, Career, Recruitment, and Workflow Approval modules.
+- Mar 2018 - Oct 2018: Chief Technology Officer at PT. Digital Amanah Insani — led technology strategy for an Islamic-education LMS platform.
+- 2017: Led development of a fuel-ordering app for SPBU owners in Karawang-Cikampek, connected to Pertamina's fuel terminal.
+- Aug 2016 - Mar 2017: Software Developer at PT. Sarana Primadata, Jakarta — RESTful backend for the Directorate General of Taxes (KPDJP).
+- Feb 2016 - Jan 2017: Java Web Developer at FTTM ITB — nationwide reporting system for SKK Migas drilling and reservoir data.
+- 2016: Nationwide reporting platform for BPOM's safe-market field officers.
+- Aug 2014 - Aug 2017: Founder, Game Developer at Gambite Studio.
+
+## Education
+
+- 2015 - 2018: Master of Engineering (M.T.) in Informatics, Institut Teknologi Bandung (ITB)
+- 2010 - 2014: Bachelor of Computer Science (S.Kom.) in Informatics, Universitas Jenderal Achmad Yani (Unjani)
+
+## Links
+
+- GitHub: https://github.com/ahmadarif-lab
+- LinkedIn: https://www.linkedin.com/in/arifahmad/
+- Medium: https://medium.com/@ahmadarif
