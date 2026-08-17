@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bontot.my.id/sitemap.xml
