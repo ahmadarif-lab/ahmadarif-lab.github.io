@@ -155,6 +155,3 @@ export const publications = [
     venue: "SNATI 2018",
   },
 ];
-
-export const activities =
-  "Apart from working, I spend time with my family, learning religion, and sometimes playing games.";

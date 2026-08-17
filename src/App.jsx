@@ -5,7 +5,6 @@ import { ProjectsSection } from "./components/ProjectsSection.jsx";
 import { ExperienceSection } from "./components/ExperienceSection.jsx";
 import { EducationCard } from "./components/EducationCard.jsx";
 import { PublicationsCard } from "./components/PublicationsCard.jsx";
-import { ActivitiesCard } from "./components/ActivitiesCard.jsx";
 import { Footer } from "./components/Footer.jsx";
 import { GoToTopButton } from "./components/GoToTopButton.jsx";
 
@@ -19,7 +18,6 @@ export default function App() {
       <ExperienceSection />
       <EducationCard />
       <PublicationsCard />
-      <ActivitiesCard />
       <Footer />
       <GoToTopButton />
     </>
