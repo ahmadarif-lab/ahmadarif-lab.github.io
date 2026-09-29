@@ -65,13 +65,15 @@ a {
   inset: -60% -20%;
   z-index: 0;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.28) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
   background-size: 40px 40px;
   transform: perspective(300px) rotateX(65deg);
   transform-origin: 50% 50%;
-  mask-image: linear-gradient(to bottom, transparent 0%, black 42%, black 100%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 42%, black 100%);
+  mask-image:
+    linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 27%, rgba(0, 0, 0, 0.9) 45%, rgba(0, 0, 0, 0.55) 58%, transparent 70%);
+  -webkit-mask-image:
+    linear-gradient(to bottom, transparent 0%, rgba(0, 0, 0, 0.6) 27%, rgba(0, 0, 0, 0.9) 45%, rgba(0, 0, 0, 0.55) 58%, transparent 70%);
   pointer-events: none;
 }
 
