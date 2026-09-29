@@ -288,6 +288,7 @@ a {
 .social-links a:nth-child(1) { background: var(--yellow); }
 .social-links a:nth-child(2) { background: var(--green); }
 .social-links a:nth-child(3) { background: var(--card); }
+.social-links a:nth-child(4) { background: var(--blue-soft); }
 
 .social-links a:hover {
   transform: translate(-2px, -2px);
