@@ -2,7 +2,7 @@
 
 Personal profile site for Ahmad Arif, built with Vite + React.
 
-Live at [bontot.my.id](https://bontot.my.id).
+Live at [ahmadarif.id](https://ahmadarif.id).
 
 ## Development
 

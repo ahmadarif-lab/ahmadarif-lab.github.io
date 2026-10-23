@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bontot.my.id/sitemap.xml
+Sitemap: https://ahmadarif.id/sitemap.xml
