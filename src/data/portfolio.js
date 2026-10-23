@@ -10,7 +10,7 @@ export const profile = {
     { label: "GitHub", href: "https://github.com/ahmadarif-lab", icon: "github" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/arifahmad/", icon: "linkedin" },
     { label: "Medium", href: "https://medium.com/@ahmadarif", icon: "medium" },
-    { label: "Apps", href: "https://apps.bontot.my.id", icon: "globe" },
+    { label: "Apps", href: "https://apps.ahmadarif.id", icon: "globe" },
   ],
 };
 
